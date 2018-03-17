@@ -7,6 +7,7 @@ target 'ELInstagramCloneTTT' do
 
   # Pods for ELInstagramCloneTTT
 pod 'Firebase/Core'
+pod 'Alamofire'
 pod 'SwiftLint'
 
 end
