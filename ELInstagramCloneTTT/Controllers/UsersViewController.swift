@@ -33,11 +33,11 @@ class UsersViewController: UIViewController {
             for (_, value) in users {
                 if let userID = value["uid"] as? String {
                     if userID != Auth.auth().currentUser!.uid {
-                        let userToShow = User()
+                        //let userToShow = User()
                         if let username = value["username"] as? String {
-                            userToShow.username = username
-                            userToShow.userID = userID
-                            self.users.append(userToShow)
+                            //userToShow.username = username
+                            //userToShow.userID = userID
+                            //self.users.append(userToShow)
                         }
                     }
                 }
@@ -62,8 +62,8 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell",
                                                  for: indexPath) as! UserTableViewCell
 
-        cell.userNameLabel.text = users[indexPath.row].username
-        cell.userID = users[indexPath.row].userID
+        //cell.userNameLabel.text = users[indexPath.row].username
+        //cell.userID = users[indexPath.row].userID
         //cell.userImageView.downloadImage(from: users[indexPath.row].imagePath!)
         checkFollowing(indexPath: indexPath)
         return cell
@@ -75,7 +75,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         let database = Database.database().reference()
         let key = database.child("users").childByAutoId().key
         var isFollower = false
-
+        /*
         database.child("users").child(userID).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
             if let following = snapshot.value as? [String : AnyObject] {
                 for (key, value) in following {
@@ -96,13 +96,13 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
                 self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             }
         })
-        database.removeAllObservers()
+        database.removeAllObservers()*/
     }
 
     func checkFollowing(indexPath: IndexPath) {
         let userID = Auth.auth().currentUser!.uid
         let database = Database.database().reference()
-
+/*
         database.child("users").child(userID).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
             if let following = snapshot.value as? [String : AnyObject] {
                 for (key, value) in following {
@@ -113,7 +113,7 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
         })
-        database.removeAllObservers()
+        database.removeAllObservers()*/
     }
 }
 

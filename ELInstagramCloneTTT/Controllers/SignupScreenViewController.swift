@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class SignupScreenViewController: UIViewController {
 
@@ -125,22 +126,44 @@ class SignupScreenViewController: UIViewController {
                 print(error.localizedDescription)
             }
             if let user = user {
-                if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
-                    changeRequest.displayName = self.usernameTextField.text!
-                    changeRequest.commitChanges(completion: nil)
-                }
-                let newUser = User(userID: user.uid,
-                                   username: user.displayName!,
-                                   email: user.email!)
-                
-                let userInfo: [String : Any] = ["uid": user.uid,
-                                                 "username": self.usernameTextField.text]
-                self.database.child("users").child(user.uid).setValue(userInfo)
+                self.updateUserDisplayName()
+                self.putUserToFirebase(user: user)
+
                 let vc = UIStoryboard(name: "Main",
                     bundle:nil).instantiateViewController(withIdentifier:"TabBar")
                 self.present(vc, animated: true, completion: nil)
                 }
             })
+        }
+    }
+
+    func updateUserDisplayName() {
+        if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+            changeRequest.displayName = self.usernameTextField.text!
+            changeRequest.commitChanges(completion: nil)
+        }
+    }
+
+    func putUserToFirebase(user: User) {
+        // Gets the Firebase authentication ID Token required to send requests through Alamofire
+        user.getIDTokenForcingRefresh(true) { idToken, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return;
+            }
+            let newUser = LocalUser(userID: user.uid,
+                                    username: self.usernameTextField.text!)
+            if let idToken = idToken,
+                let url = URL(string:
+                    "\(FirebaseURL.databaseURL.rawValue)/users/\(user.uid).json?auth=\(idToken)") {
+                Alamofire.request(url,
+                                  method: HTTPMethod.put,
+                                  parameters: newUser.dictionary,
+                                  encoding: JSONEncoding.default,
+                                  headers: nil).response(completionHandler: { (response) in
+                                    print(response.response)
+                                  })
+            }
         }
     }
 
@@ -158,7 +181,8 @@ class SignupScreenViewController: UIViewController {
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // In a storyboard-based application, you will often want to do a little preparation
+     // before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

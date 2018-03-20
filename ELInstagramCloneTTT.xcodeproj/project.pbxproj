@@ -18,6 +18,8 @@
 		D433E4B0205EE97A00D05CAB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4AF205EE97A00D05CAB /* CommentTableViewCell.swift */; };
 		D433E4B2205EEA8B00D05CAB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4B1205EEA8B00D05CAB /* Post.swift */; };
 		D433E4B4205EEDA900D05CAB /* MomentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4B3205EEDA900D05CAB /* MomentsTableViewCell.swift */; };
+		D433E4DA20601EF600D05CAB /* FirebaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4D920601EF600D05CAB /* FirebaseURL.swift */; };
+		D433E4DC2060387F00D05CAB /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4DB2060387F00D05CAB /* ImageManager.swift */; };
 		D47142B5205D848700F4E4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47142B4205D848700F4E4C0 /* AppDelegate.swift */; };
 		D47142B7205D848700F4E4C0 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47142B6205D848700F4E4C0 /* LoginScreenViewController.swift */; };
 		D47142BA205D848700F4E4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47142B8205D848700F4E4C0 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 		D433E4AF205EE97A00D05CAB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		D433E4B1205EEA8B00D05CAB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D433E4B3205EEDA900D05CAB /* MomentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsTableViewCell.swift; sourceTree = "<group>"; };
+		D433E4D920601EF600D05CAB /* FirebaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseURL.swift; sourceTree = "<group>"; };
+		D433E4DB2060387F00D05CAB /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		D47142B1205D848700F4E4C0 /* ELInstagramCloneTTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELInstagramCloneTTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47142B4205D848700F4E4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D47142B6205D848700F4E4C0 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +80,9 @@
 			children = (
 				D47142B6205D848700F4E4C0 /* LoginScreenViewController.swift */,
 				D433E49E205D94B500D05CAB /* SignupScreenViewController.swift */,
+				D433E4D920601EF600D05CAB /* FirebaseURL.swift */,
 				D433E4A0205DEEB000D05CAB /* MomentsCollectionViewController.swift */,
+				D433E4DB2060387F00D05CAB /* ImageManager.swift */,
 				D433E4A7205E004100D05CAB /* UsersViewController.swift */,
 				D433E4AD205ED09F00D05CAB /* UploadTakePhotoViewController.swift */,
 			);
@@ -305,8 +311,10 @@
 				D433E4A3205DF22D00D05CAB /* UIColor+colorWithHexString.swift in Sources */,
 				D433E49F205D94B500D05CAB /* SignupScreenViewController.swift in Sources */,
 				D433E4AE205ED09F00D05CAB /* UploadTakePhotoViewController.swift in Sources */,
+				D433E4DA20601EF600D05CAB /* FirebaseURL.swift in Sources */,
 				D433E4AC205E01E700D05CAB /* User.swift in Sources */,
 				D433E4A1205DEEB000D05CAB /* MomentsCollectionViewController.swift in Sources */,
+				D433E4DC2060387F00D05CAB /* ImageManager.swift in Sources */,
 				D433E4B0205EE97A00D05CAB /* CommentTableViewCell.swift in Sources */,
 				D433E4A6205DFF4F00D05CAB /* UserTableViewCell.swift in Sources */,
 				D47142B5205D848700F4E4C0 /* AppDelegate.swift in Sources */,
