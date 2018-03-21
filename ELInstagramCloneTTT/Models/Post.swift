@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 struct Post: Codable {
     var author: String!
     var likes: Int!
-    var pathToImage: String!
+    var likedBy: [String] = [""]
+    var pathToHQImage: String
+    var pathToLQImage: String
     var postID: String!
     var userID: String!
 
@@ -22,10 +25,16 @@ struct Post: Codable {
         return (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
     }
 
-    init(author: String, likes: Int, pathToImage: String, postID: String, userID: String) {
+    init(author: String,
+         likes: Int,
+         pathToHQImage: String,
+         pathToLQImage: String,
+         postID: String,
+         userID: String) {
         self.author = author
         self.likes = likes
-        self.pathToImage = pathToImage
+        self.pathToHQImage = pathToHQImage
+        self.pathToLQImage = pathToLQImage
         self.postID = postID
         self.userID = userID
     }

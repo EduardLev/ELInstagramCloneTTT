@@ -9,7 +9,7 @@
 import UIKit
 
 private let _singletonInstance = ImageManager()
-private let kMaxCacheImageSize:Int = 20
+private let kMaxCacheImageSize:Int = 10
 
 class ImageManager: NSObject {
     static var shared: ImageManager { return _singletonInstance }

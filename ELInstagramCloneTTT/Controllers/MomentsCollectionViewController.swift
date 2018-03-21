@@ -11,14 +11,16 @@ import Firebase
 import Alamofire
 
 struct imagePost: Decodable {
-    var pathToImage: String!
+    var pathToHQImage: String!
+    var pathToLQImage: String!
 }
 
 private let reuseIdentifier = "momentCell"
 
 class MomentsCollectionViewController: UICollectionViewController {
 
-    var posts: [Post]!
+    var posts: [String : Post]!
+    var actualPosts: [Post]!
 
     // This will hold a local copy of a dictionary where keys are the postID's
     // and the values are imagePost structs, which hold the paths to the images
@@ -27,11 +29,27 @@ class MomentsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if #available(iOS 10.0, *) {
+            let refreshControl = UIRefreshControl()
+            let title = NSLocalizedString("Pull To Refresh", comment: "Pull To Refresh")
+            refreshControl.attributedTitle = NSAttributedString(string: title)
+            refreshControl.addTarget(self,
+                                     action: #selector(refreshOptions(sender:)),
+                                     for: .valueChanged)
+            self.collectionView?.refreshControl = refreshControl
+        }
+
+    self.downloadImageURLS()
+    }
+
+    @objc private func refreshOptions(sender: UIRefreshControl) {
+        self.downloadImageURLS()
+        sender.endRefreshing()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        downloadImageURLS()
     }
 
     func downloadImageURLS() {
@@ -42,7 +60,6 @@ class MomentsCollectionViewController: UICollectionViewController {
                     print(error.localizedDescription)
                     return;
                 }
-
                 guard let idToken = idToken else { return }
                 guard let url = URL(string:
                     "\(FirebaseURL.databaseURL.rawValue)/images.json?auth=\(idToken)") else {
@@ -51,23 +68,62 @@ class MomentsCollectionViewController: UICollectionViewController {
                 Alamofire.request(url, method: .get, parameters: nil,
                                   encoding: JSONEncoding.default,
                                   headers: nil).response(completionHandler: { (response) in
-                                        //print(response.response) - debug
                                         if response.response?.statusCode == 200 {
                                             if let data = response.data {
-                                                self.images = try! JSONDecoder().decode([String :
+                                                self.images = nil
+                                                self.imageURLS = []
+                                                self.images = try? JSONDecoder().decode([String :
                                                     imagePost].self, from: data)
-                                                //print(self.images) - debug
-                                                for item in self.images {
-                                                    self.imageURLS.append(item.value.pathToImage)
-                                                    //print(self.imageURLS) - debug
+                                                guard let images = self.images else {return}
+                                                for item in images {
+                                                  self.imageURLS.append(item.value.pathToLQImage)
                                                 }
-                                                //print(self.imageURLS) - debug
                                             }
                                             self.collectionView?.reloadData()
                                         }
                                       })
             }
         }
+    }
+
+    func getPosts(indexPath: IndexPath) {
+        if let user = Auth.auth().currentUser {
+            // Gets the Firebase authentication ID Token required to send requests through Alamofire
+            user.getIDTokenForcingRefresh(true) { idToken, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return;
+                }
+                guard let idToken = idToken else { return }
+                guard let url = URL(string:
+                    "\(FirebaseURL.databaseURL.rawValue)/posts.json?auth=\(idToken)") else {
+                        return
+                }
+                Alamofire.request(url, method: .get, parameters: nil,
+                                  encoding: JSONEncoding.default,
+                                  headers: nil).response(completionHandler: { (response) in
+                                    if response.response?.statusCode == 200 {
+                                        if let data = response.data {
+                                            self.actualPosts = []
+                                            self.posts = [:]
+                                            self.posts = try? JSONDecoder().decode([String :
+                                                Post].self, from: data)
+                                        }
+                                        guard let posts = self.posts else {return}
+                                            for post in posts {
+                                                self.actualPosts.append(post.value)
+                                            }
+                                        self.showSelectedPost(indexPath: indexPath)
+                                    }
+                                  })
+            }
+        }
+    }
+
+    func showSelectedPost(indexPath: IndexPath) {
+        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostVC") as! PostViewController
+        postViewController.post = self.actualPosts[indexPath.row]
+        self.navigationController?.pushViewController(postViewController, animated: true)
     }
 
     // MARK: UICollectionViewDataSource
@@ -83,10 +139,7 @@ class MomentsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                      for: indexPath)        
-        cell.backgroundColor = .black
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         updateImageForCell(cell: cell,
                            inCollectionView: collectionView,
                            withImageURL: imageURLS[indexPath.row],
@@ -103,23 +156,23 @@ class MomentsCollectionViewController: UICollectionViewController {
         imageView.image = UIImage(named: "placeholder")
 
         // load image.
-        let imageURL = self.imageURLS[indexPath.row]
         //print(imageURL) - debug
+        let imageURL = imageURLS[indexPath.row]
 
         ImageManager.shared.downloadImageFromURL(imageURL) {
             (success, image) -> Void in
             if success && image != nil {
                 // checks that the view did not move before setting the image to the cell!
-                if collectionView.indexPath(for: cell)?.row == indexPath.row {
+                //if collectionView.indexPath(for: cell)?.row == indexPath.row {
                     imageView.image = image
-                }
+                //}
             }
         }
     }
 
     // MARK: - Lazy Loading of cells
 
-    func loadImagesForOnScreenRows() {
+    /*func loadImagesForOnScreenRows() {
         if imageURLS.count > 0 {
             if let visiblePaths = collectionView?.indexPathsForVisibleItems {
                 for indexPath in visiblePaths {
@@ -132,18 +185,22 @@ class MomentsCollectionViewController: UICollectionViewController {
                 }
             }
         }
-    }
+    }*/
 
     // MARK: UICollectionViewDelegate
 
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        getPosts(indexPath: indexPath)
+    }
+
+    /*override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnScreenRows()
     }
 
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView,
                                            willDecelerate decelerate: Bool) {
-        if !decelerate { loadImagesForOnScreenRows() }
-    }
+         loadImagesForOnScreenRows() 
+    }*/
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -209,5 +266,16 @@ extension MomentsCollectionViewController : UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0 // Space between rows in the collection View
     }
+}
+
+extension MomentsCollectionViewController : UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
+    }
+
+
+
+
+
 }
 
