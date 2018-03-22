@@ -84,9 +84,4 @@ class ImageManager: NSObject {
 }
 
 
-    //func getImageURLList() -> [String] { return kLazyLoadImages }
-
-    //func clearCache() { imageCache.removeAll() }
-
-
 

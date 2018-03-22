@@ -180,7 +180,7 @@ class MomentsCollectionViewController: UICollectionViewController {
     }
 
     // MARK: - Lazy Loading of cells
-    func loadImagesForOnScreenRows() {
+    /*func loadImagesForOnScreenRows() {
         if imageURLS.count > 0 {
             if let visiblePaths = collectionView?.indexPathsForVisibleItems {
                 for indexPath in visiblePaths {
@@ -193,7 +193,7 @@ class MomentsCollectionViewController: UICollectionViewController {
                 }
             }
         }
-    }
+    }*/
 
     // MARK: UICollectionViewDelegate
 
@@ -201,14 +201,14 @@ class MomentsCollectionViewController: UICollectionViewController {
         getPosts(indexPath: indexPath)
     }
 
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    /*override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnScreenRows()
     }
 
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView,
                                            willDecelerate decelerate: Bool) {
         loadImagesForOnScreenRows()
-    }
+    }*/
 }
 
 extension MomentsCollectionViewController : UICollectionViewDataSourcePrefetching {
