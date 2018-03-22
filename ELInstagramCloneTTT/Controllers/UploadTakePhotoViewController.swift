@@ -64,7 +64,6 @@ class UploadTakePhotoViewController: UIViewController {
 
             let imageData = UIImagePNGRepresentation(self.selectedImage!)
             let options = [
-                kCGImageSourceCreateThumbnailWithTransform: true,
                 kCGImageSourceCreateThumbnailFromImageAlways: true,
                 kCGImageSourceThumbnailMaxPixelSize: 300] as CFDictionary
             let source = CGImageSourceCreateWithData(imageData! as CFData, nil)!
@@ -73,7 +72,7 @@ class UploadTakePhotoViewController: UIViewController {
 
             if let image = self.selectedImage,
                 let dataLQ = UIImageJPEGRepresentation(thumbnail, 0.5),
-                    let dataHQ = UIImageJPEGRepresentation(image, 0.3) {
+                    let dataHQ = UIImageJPEGRepresentation(image, 0.15) {
                         dataRequestToFirebase(imageReferenceHQ: imageReferenceHQ, dataHQ: dataHQ,
                                               imageReferenceLQ: imageReferenceLQ, dataLQ: dataLQ,
                                               postKey: postKey)
@@ -161,7 +160,8 @@ class UploadTakePhotoViewController: UIViewController {
                         {
                             Alamofire.request(url,
                                               method: .put,
-                                              parameters: ["pathToHQImage" : (HQURL?.absoluteString),
+                                              parameters: ["order" : newPost.order,
+                                                           "pathToHQImage" : (HQURL?.absoluteString),
                                                            "pathToLQImage" : (LQURL?.absoluteString),
                                                            ],
                                               encoding: JSONEncoding.default,
@@ -172,61 +172,7 @@ class UploadTakePhotoViewController: UIViewController {
                 }
             })
         }
-
     }
-
-    /*
-    func downloadImageFromStorage(imageReference: StorageReference,
-                                  user: User,
-                                  postKey: String) {
-        imageReference.downloadURL { (url, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                AppDelegate.shared().dismissActivityIndicator()
-                return
-            }
-            if let url = url {
-                let newPost = Post(author: user.displayName!,
-                                   likes: 0,
-                                   pathToImage: url.absoluteString,
-                                   postID: postKey,
-                                   userID: user.uid)
-                //let newFile = [postKey : newPost.dictionary]
-
-                user.getIDTokenForcingRefresh(true, completion: { (idToken, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    if let idToken = idToken,
-                         let url = URL(string:
-                        "\(FirebaseURL.databaseURL.rawValue)/posts/\(postKey).json?auth=\(idToken)")
-                    {
-                        Alamofire.request(url,
-                                          method: .put,
-                                          parameters: newPost.dictionary,
-                                          encoding: JSONEncoding.default,
-                                          headers: nil).response(completionHandler: { (response) in
-                                          })
-                    }
-
-                    if let idToken = idToken,
-                        let url = URL(string:
-                        "\(FirebaseURL.databaseURL.rawValue)/images/\(postKey).json?auth=\(idToken)")
-                    {
-                        Alamofire.request(url,
-                                          method: .put,
-                                          parameters: ["pathToImage": newPost.pathToImage],
-                                          encoding: JSONEncoding.default,
-                                          headers: nil).response(completionHandler: { (response) in
-                                          })
-                    }
-                })
-                AppDelegate.shared().dismissActivityIndicator()
-            }
-        }
-    }
-}*/
 }
 
 extension UploadTakePhotoViewController: UIImagePickerControllerDelegate {

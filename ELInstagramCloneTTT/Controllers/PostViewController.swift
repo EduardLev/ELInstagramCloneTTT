@@ -29,6 +29,10 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         likes = post.likes
+        comments = post.comments
+        if comments[0][0] == "" {
+            comments.remove(at: 0)
+        }
         updateLikesLabel()
         updateUI()
 
@@ -61,10 +65,15 @@ class PostViewController: UIViewController {
         guard let userInfo = notification.userInfo else { return }
         self.commentView.frame.origin.y =
             self.view.frame.size.height - self.commentView.frame.size.height
+        self.commentView.setNeedsDisplay()
     }
 
     func updateLikesLabel() {
-        likesLabel.text = String(self.likes) + " " + "Likes"
+        if (self.likes == 1) {
+            likesLabel.text = String(self.likes) + " " + "Like"
+        } else {
+            likesLabel.text = String(self.likes) + " " + "Likes"
+        }
         if let user = Auth.auth().currentUser {
             if post.likedBy.contains(user.uid) {
                 self.heartButton.setImage(UIImage(named: "icn_like_active_optimized"),
@@ -78,16 +87,14 @@ class PostViewController: UIViewController {
         }
     }
 
-
     @IBAction func sendButtonDidClick(_ sender: UIButton) {
         if let user = Auth.auth().currentUser,
          let text = commentField.text {
             commentField.resignFirstResponder()
             comments.append([user.displayName!,text])
-            print(comments)
             self.tableView.reloadData()
         }
-
+        self.post.comments = self.comments
         self.updatePostToFirebase()
     }
 
@@ -119,10 +126,12 @@ class PostViewController: UIViewController {
                 post.likedBy.append(user.uid)
                 likedByUser = true
                 self.likes += 1
+                self.post.likes! += 1
             } else {
                 post.likedBy.removeLast()
                 likedByUser = false
                 self.likes -= 1
+                self.post.likes! -= 1
             }
             updateLikesLabel()
         }
@@ -131,9 +140,24 @@ class PostViewController: UIViewController {
     }
 
     func updatePostToFirebase() {
-
-        // networking code
-
+        if let user = Auth.auth().currentUser {
+            user.getIDTokenForcingRefresh(true, completion: { (idToken, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if let idToken = idToken,
+                    let url = URL(string:
+                        "\(FirebaseURL.databaseURL.rawValue)/posts/\(self.post.postID!).json?auth=\(idToken)")
+                {
+                    Alamofire.request(url,
+                                      method: .patch,
+                                      parameters: self.post.dictionary,
+                                      encoding: JSONEncoding.default,
+                                      headers: nil)
+                }
+            })
+        }
     }
 
     func deletePostOnFirebase() {
@@ -199,7 +223,6 @@ class PostViewController: UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
-
 }
 
 extension PostViewController : UITableViewDelegate {
@@ -214,8 +237,10 @@ extension PostViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
-        cell.textLabel?.text = comments[indexPath.row][0]
-        cell.detailTextLabel?.text = comments[indexPath.row][1]
+        if comments[indexPath.row][0] != "" {
+            cell.textLabel?.text = comments[indexPath.row][0]
+            cell.detailTextLabel?.text = comments[indexPath.row][1]
+        }
         return cell
     }
 }
@@ -224,6 +249,7 @@ extension PostViewController : UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let _ = textField.text {
+            textField.text = ""
             textField.resignFirstResponder()
             return false
         }

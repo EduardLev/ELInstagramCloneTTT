@@ -17,7 +17,9 @@ struct Post: Codable {
     var pathToLQImage: String
     var postID: String!
     var userID: String!
-
+    var order: Double!
+    var comments: [[String]] = [[""]]
+    
     var data: Data {
         return try! JSONEncoder().encode(self)
     }
@@ -37,5 +39,6 @@ struct Post: Codable {
         self.pathToLQImage = pathToLQImage
         self.postID = postID
         self.userID = userID
+        self.order = Date.init().timeIntervalSince1970
     }
 }

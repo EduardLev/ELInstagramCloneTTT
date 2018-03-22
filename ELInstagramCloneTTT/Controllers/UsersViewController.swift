@@ -23,6 +23,12 @@ class UsersViewController: UIViewController {
         self.tableView.dataSource = self
     }
 
+    override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(animated)
+
+        retrieveUsers()
+    }
+
     func retrieveUsers() {
         let database = Database.database().reference()
 
@@ -62,9 +68,8 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell",
                                                  for: indexPath) as! UserTableViewCell
 
-        //cell.userNameLabel.text = users[indexPath.row].username
-        //cell.userID = users[indexPath.row].userID
-        //cell.userImageView.downloadImage(from: users[indexPath.row].imagePath!)
+        cell.userNameLabel.text = users[indexPath.row].displayName
+        cell.userID = users[indexPath.row].uid
         checkFollowing(indexPath: indexPath)
         return cell
     }
@@ -75,45 +80,45 @@ extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
         let database = Database.database().reference()
         let key = database.child("users").childByAutoId().key
         var isFollower = false
-        /*
+
         database.child("users").child(userID).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
             if let following = snapshot.value as? [String : AnyObject] {
                 for (key, value) in following {
-                    if value as! String == self.users[indexPath.row].userID {
+                    if value as! String == self.users[indexPath.row].uid {
                         isFollower = true
                         database.child("users").child(userID).child("following/\(key)").removeValue()
-                        database.child("users").child(self.users[indexPath.row].userID).child("followers/\(key)").removeValue()
+                        database.child("users").child(self.users[indexPath.row].uid).child("followers/\(key)").removeValue()
                         self.tableView.cellForRow(at: indexPath)?.accessoryType = .none
                     }
                 }
             }
 
             if !isFollower {
-                let following = ["following/\(key)" : self.users[indexPath.row].userID]
+                let following = ["following/\(key)" : self.users[indexPath.row].uid]
                 let followers = ["followers/\(key)" : userID]
                 database.child("users").child(userID).updateChildValues(following)
-                database.child("users").child(self.users[indexPath.row].userID).updateChildValues(followers)
+                database.child("users").child(self.users[indexPath.row].uid).updateChildValues(followers)
                 self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             }
         })
-        database.removeAllObservers()*/
+        database.removeAllObservers()
     }
 
     func checkFollowing(indexPath: IndexPath) {
         let userID = Auth.auth().currentUser!.uid
         let database = Database.database().reference()
-/*
+
         database.child("users").child(userID).child("following").queryOrderedByKey().observeSingleEvent(of: .value, with: { (snapshot) in
             if let following = snapshot.value as? [String : AnyObject] {
                 for (key, value) in following {
-                    if value as! String == self.users[indexPath.row].userID {
+                    if value as! String == self.users[indexPath.row].uid {
                         print("this is happening")
                         self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
                     }
                 }
             }
         })
-        database.removeAllObservers()*/
+        database.removeAllObservers()
     }
 }
 
@@ -122,8 +127,8 @@ extension UIImageView {
     func downloadImage(from imageURL: String!) {
         let url = URLRequest(url: URL(string: imageURL)!)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
             }
 
             if let data = data {

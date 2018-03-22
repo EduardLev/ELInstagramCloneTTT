@@ -11,6 +11,7 @@ import Firebase
 import Alamofire
 
 struct imagePost: Decodable {
+    var order: Double!
     var pathToHQImage: String!
     var pathToLQImage: String!
 }
@@ -21,10 +22,12 @@ class MomentsCollectionViewController: UICollectionViewController {
 
     var posts: [String : Post]!
     var actualPosts: [Post]!
+    var orderedPosts: [Post]!
 
     // This will hold a local copy of a dictionary where keys are the postID's
     // and the values are imagePost structs, which hold the paths to the images
     var images: [String : imagePost]!
+    var actualImages: [imagePost] = []
     var imageURLS: [String] = []
 
     override func viewDidLoad() {
@@ -67,16 +70,23 @@ class MomentsCollectionViewController: UICollectionViewController {
                 }
                 Alamofire.request(url, method: .get, parameters: nil,
                                   encoding: JSONEncoding.default,
-                                  headers: nil).response(completionHandler: { (response) in
+                                  headers: nil).response(completionHandler: { [unowned self](response) in
                                         if response.response?.statusCode == 200 {
                                             if let data = response.data {
                                                 self.images = nil
                                                 self.imageURLS = []
+                                                self.actualImages = []
                                                 self.images = try? JSONDecoder().decode([String :
                                                     imagePost].self, from: data)
                                                 guard let images = self.images else {return}
                                                 for item in images {
-                                                  self.imageURLS.append(item.value.pathToLQImage)
+                                                  self.actualImages.append(item.value)
+                                                }
+                                                self.actualImages.sort(by: { (post1, post2) -> Bool in
+                                                    post1.order > post2.order
+                                                })
+                                                for item in self.actualImages {
+                                                    self.imageURLS.append(item.pathToLQImage)
                                                 }
                                             }
                                             self.collectionView?.reloadData()
@@ -113,6 +123,9 @@ class MomentsCollectionViewController: UICollectionViewController {
                                             for post in posts {
                                                 self.actualPosts.append(post.value)
                                             }
+                                        self.actualPosts.sort(by: { (post1, post2) -> Bool in
+                                            post1.order > post2.order
+                                        })
                                         self.showSelectedPost(indexPath: indexPath)
                                     }
                                   })
@@ -121,7 +134,8 @@ class MomentsCollectionViewController: UICollectionViewController {
     }
 
     func showSelectedPost(indexPath: IndexPath) {
-        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostVC") as! PostViewController
+        let postViewController = self.storyboard?.instantiateViewController(withIdentifier:
+            "PostVC") as! PostViewController
         postViewController.post = self.actualPosts[indexPath.row]
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
@@ -139,7 +153,8 @@ class MomentsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                                                      for: indexPath)
         updateImageForCell(cell: cell,
                            inCollectionView: collectionView,
                            withImageURL: imageURLS[indexPath.row],
@@ -151,41 +166,34 @@ class MomentsCollectionViewController: UICollectionViewController {
                             inCollectionView collectionView: UICollectionView,
                             withImageURL: String,
                             atIndexPath indexPath: IndexPath) {
-        // clean image first
         let imageView = cell.viewWithTag(1) as! UIImageView // gets the first view in the hierarchy
         imageView.image = UIImage(named: "placeholder")
-
-        // load image.
-        //print(imageURL) - debug
-        let imageURL = imageURLS[indexPath.row]
-
-        ImageManager.shared.downloadImageFromURL(imageURL) {
+        ImageManager.shared.downloadImageFromURL(withImageURL) {
             (success, image) -> Void in
             if success && image != nil {
                 // checks that the view did not move before setting the image to the cell!
-                //if collectionView.indexPath(for: cell)?.row == indexPath.row {
+                if collectionView.indexPath(for: cell)?.row == indexPath.row {
                     imageView.image = image
-                //}
+                }
             }
         }
     }
 
     // MARK: - Lazy Loading of cells
-
-    /*func loadImagesForOnScreenRows() {
+    func loadImagesForOnScreenRows() {
         if imageURLS.count > 0 {
             if let visiblePaths = collectionView?.indexPathsForVisibleItems {
                 for indexPath in visiblePaths {
-                    let cell = collectionView(self.collectionView!, cellForItemAt: indexPath)
+                    let cell = collectionView?.cellForItem(at: indexPath)
                     let imageURL = imageURLS[indexPath.row]
-                    self.updateImageForCell(cell: cell,
+                    self.updateImageForCell(cell: cell!,
                                             inCollectionView: self.collectionView!,
                                             withImageURL: imageURL,
                                             atIndexPath: indexPath)
                 }
             }
         }
-    }*/
+    }
 
     // MARK: UICollectionViewDelegate
 
@@ -193,49 +201,24 @@ class MomentsCollectionViewController: UICollectionViewController {
         getPosts(indexPath: indexPath)
     }
 
-    /*override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         loadImagesForOnScreenRows()
     }
 
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView,
                                            willDecelerate decelerate: Bool) {
-         loadImagesForOnScreenRows() 
-    }*/
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView,
-     shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+        loadImagesForOnScreenRows()
     }
-    */
+}
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView,
-     shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+extension MomentsCollectionViewController : UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            let cell = collectionView.cellForItem(at: indexPath)
+            let imageURL = imageURLS[indexPath.row]
+            ImageManager.shared.prefetchItem(url: imageURL)
+        }
     }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed
-     // for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView,
-     shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView,
-     canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView,
-     performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 }
 
 extension MomentsCollectionViewController : UICollectionViewDelegateFlowLayout {
@@ -266,16 +249,5 @@ extension MomentsCollectionViewController : UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0 // Space between rows in the collection View
     }
-}
-
-extension MomentsCollectionViewController : UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        
-    }
-
-
-
-
-
 }
 

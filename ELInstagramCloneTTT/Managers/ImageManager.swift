@@ -9,7 +9,7 @@
 import UIKit
 
 private let _singletonInstance = ImageManager()
-private let kMaxCacheImageSize:Int = 10
+private let kMaxCacheImageSize:Int = 40
 
 class ImageManager: NSObject {
     static var shared: ImageManager { return _singletonInstance }
@@ -60,7 +60,29 @@ class ImageManager: NSObject {
             task.resume()
         }
     }
+
+    func prefetchItem(url urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        let task = URLSession.shared.downloadTask(with: url,
+                completionHandler: { (url, response, error) in
+                    if error != nil {
+                        print("Error \(error!.localizedDescription)")
+                    } else {
+                        if let url = URL(string: urlString),
+                        let data = try? Data(contentsOf: url) {
+                        if let image = UIImage(data: data) {
+                        self.cacheImage(image, forURL: url.absoluteString)
+                    }
+                }
+            }
+            })
+            task.resume()
+        }
 }
+
 
     //func getImageURLList() -> [String] { return kLazyLoadImages }
 
