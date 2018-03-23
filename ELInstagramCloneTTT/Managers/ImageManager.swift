@@ -9,7 +9,7 @@
 import UIKit
 
 private let _singletonInstance = ImageManager()
-private let kMaxCacheImageSize:Int = 40
+private let kMaxCacheImageSize:Int = 50
 
 class ImageManager: NSObject {
     static var shared: ImageManager { return _singletonInstance }
@@ -32,31 +32,25 @@ class ImageManager: NSObject {
     }
 
     func downloadImageFromURL(_ urlString: String,
-                              completion: ((_ success: Bool,_ image: UIImage?) -> Void)?) {
+                              completion: ((_ success: Bool,_ image: UIImage?,_ wasCached: Bool) -> Void)?) {
 
         // First, checks for cachedImage
         if let cachedImage = cachedImageForURL(urlString) {
-            DispatchQueue.main.async(execute: { completion?(true, cachedImage) })
+            completion?(true, cachedImage, true)
         } else {
             guard let url = URL(string: urlString) else {
-                completion?(false,nil)
+                completion?(false,nil,false)
                 return
             }
-
-            let task = URLSession.shared.downloadTask(with: url,
-                completionHandler: { (url, response, error) in
-                    if error != nil {
-                        print("Error \(error!.localizedDescription)")
-                    } else {
-                        if let url = URL(string: urlString),
-                            let data = try? Data(contentsOf: url) {
-                            if let image = UIImage(data: data) {
-                                self.cacheImage(image, forURL: url.absoluteString)
-                                DispatchQueue.main.async(execute: { completion?(true, image) })
-                            }
-                        }
-                    }
-            })
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                print("downloadImageFromURL complete \(urlString)")
+                if let error = error {
+                    print("Error \(urlString) \(error.localizedDescription)")
+                } else if let data = data, let image = UIImage(data: data) {
+                    self.cacheImage(image, forURL: url.absoluteString)
+                    DispatchQueue.main.async { completion?(true, image, false) }
+                }
+            }
             task.resume()
         }
     }

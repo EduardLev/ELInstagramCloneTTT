@@ -211,6 +211,9 @@ class PostViewController: UIViewController {
     }
 
     @IBAction func moreButton(_ sender: UIButton) {
+        if Auth.auth().currentUser?.uid != post.userID {
+            return
+        }
         let alert = UIAlertController()
         let deleteAction = UIAlertAction(title: "Delete Post",
                                          style: UIAlertActionStyle.default) { (action) in

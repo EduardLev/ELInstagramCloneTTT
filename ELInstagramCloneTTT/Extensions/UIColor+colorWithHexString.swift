@@ -32,3 +32,17 @@ extension UIColor {
                   alpha: CGFloat(a) / 255)
     }
 }
+
+extension UIImage {
+    func getNormalizedImage(image: UIImage) -> UIImage {
+        if (self.imageOrientation == UIImageOrientation.up) {
+            return image
+        }
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        image.draw(in: CGRect(x: 0.0, y: 0.0, width: self.size.width, height: self.size.height))
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalizedImage!
+    }
+}
+

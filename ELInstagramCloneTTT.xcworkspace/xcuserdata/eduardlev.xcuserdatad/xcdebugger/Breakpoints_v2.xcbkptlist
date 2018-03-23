@@ -9,60 +9,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.664597"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.66527"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "MomentsCollectionViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.665603"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "updateImageForCell(cell:inCollectionView:withImageURL:atIndexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UploadTakePhotoViewController.swift"
-            timestampString = "543431315.665917"
+            timestampString = "543508304.073486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "createPostToFirebase(imageReferenceLQ:imageReferenceHQ:postKey:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,59 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.666116"
+            timestampString = "543508304.073815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "updateImageForCell(cell:inCollectionView:withImageURL:atIndexPath:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ELInstagramCloneTTT.MomentsCollectionViewController.updateImageForCell(cell: __ObjC.UICollectionViewCell, inCollectionView: __ObjC.UICollectionView, withImageURL: Swift.String, atIndexPath: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "ELInstagramCloneTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eduardlev/Desktop/ELInstagramCloneTTT/ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-                  timestampString = "543347767.192192"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162"
-                  offsetFromSymbolStart = "500">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;__ObjC.UIImage&gt;) -&gt; () in ELInstagramCloneTTT.MomentsCollectionViewController.updateImageForCell(cell: __ObjC.UICollectionViewCell, inCollectionView: __ObjC.UICollectionView, withImageURL: Swift.String, atIndexPath: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "ELInstagramCloneTTT"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/eduardlev/Desktop/ELInstagramCloneTTT/ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-                  timestampString = "543347767.194479"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.6664391"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "getPosts(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.666739"
+            timestampString = "543508304.073871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "showSelectedPost(indexPath:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "getPosts(indexPath:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -186,12 +90,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.6670361"
+            timestampString = "543508304.073918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
+            timestampString = "543508304.073962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "logoutButtonDidClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,28 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.66733"
+            timestampString = "543508304.0740041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "getPosts(indexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.667627"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "getPosts(indexPath:)"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "logoutButtonDidClick(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -266,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.667915"
+            timestampString = "543508304.074048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "getPosts(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.668201"
+            timestampString = "543508304.07409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "getPosts(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.668484"
+            timestampString = "543508304.074131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "getPosts(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,39 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.668774"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "getPosts(indexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.6690609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "getPosts(indexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.6693521"
+            timestampString = "543508304.074182"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
@@ -362,11 +234,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.669633"
+            timestampString = "543508304.0742249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "getPosts(indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
+            timestampString = "543508304.074267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "getPosts(indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
+            timestampString = "543508304.074308"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "getPosts(indexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UploadTakePhotoViewController.swift"
-            timestampString = "543431315.669915"
+            timestampString = "543508304.074352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "createPostToFirebase(imageReferenceLQ:imageReferenceHQ:postKey:)"
             landmarkType = "7">
             <Locations>
@@ -426,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UploadTakePhotoViewController.swift"
-            timestampString = "543431315.669963"
+            timestampString = "543508304.074572"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "createPostToFirebase(imageReferenceLQ:imageReferenceHQ:postKey:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UploadTakePhotoViewController.swift"
-            timestampString = "543431315.670239"
+            timestampString = "543508304.074816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "createPostToFirebase(imageReferenceLQ:imageReferenceHQ:postKey:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UploadTakePhotoViewController.swift"
-            timestampString = "543431315.6702861"
+            timestampString = "543508304.075032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "createPostToFirebase(imageReferenceLQ:imageReferenceHQ:postKey:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,12 +426,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.670331"
+            timestampString = "543506308.134145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -538,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.670517"
+            timestampString = "543506308.134197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
@@ -554,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.6705689"
+            timestampString = "543506308.13424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -570,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.6706181"
+            timestampString = "543506308.134281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -586,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.670664"
+            timestampString = "543506308.134323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -602,59 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.670712"
+            timestampString = "543508304.075305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "MomentsCollectionViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.671007"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "updateImageForCell(cell:inCollectionView:withImageURL:atIndexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.671301"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.671589"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.67188"
+            timestampString = "543508304.0753551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -682,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.67217"
+            timestampString = "543508304.0754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -698,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.672454"
+            timestampString = "543508304.075444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -714,7 +570,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.672738"
+            timestampString = "543508304.0754859"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "downloadImageURLS()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
+            timestampString = "543508304.075528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -729,24 +601,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.673023"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "downloadImageURLS()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.673362"
+            timestampString = "543506308.1358531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
@@ -762,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.673419"
+            timestampString = "543506308.1359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -778,7 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
-            timestampString = "543431315.6734689"
+            timestampString = "543506308.135944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -794,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UsersViewController.swift"
-            timestampString = "543431315.67352"
+            timestampString = "543508304.075609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -810,7 +666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/UsersViewController.swift"
-            timestampString = "543431315.673741"
+            timestampString = "543508304.075648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -826,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.6738549"
+            timestampString = "543508304.075685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -842,12 +698,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.674239"
+            timestampString = "543508304.075727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "collectionView(_:prefetchItemsAt:)"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "collectionView(_:layout:insetForSectionAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -858,12 +714,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.674509"
+            timestampString = "543508304.0757689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "collectionView(_:prefetchItemsAt:)"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "collectionView(_:layout:insetForSectionAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -874,12 +730,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.674777"
+            timestampString = "543508304.07581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "collectionView(_:prefetchItemsAt:)"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "collectionView(_:layout:insetForSectionAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -890,12 +746,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.6750439"
+            timestampString = "543508304.075852"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "collectionView(_:prefetchItemsAt:)"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "collectionView(_:layout:insetForSectionAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -906,29 +762,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.675303"
+            timestampString = "543508304.075894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "MomentsCollectionViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431315.675559"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "MomentsCollectionViewController"
-            landmarkType = "3">
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -937,14 +777,78 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ELInstagramCloneTTT/Controllers/MomentsCollectionViewController.swift"
-            timestampString = "543431743.834797"
+            filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
+            timestampString = "543506308.137437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "updateImageForCell(cell:inCollectionView:withImageURL:atIndexPath:)"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "deletePostOnFirebase()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
+            timestampString = "543506308.137481"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "deletePostOnFirebase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ELInstagramCloneTTT/Controllers/PostViewController.swift"
+            timestampString = "543506308.13752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "deletePostOnFirebase()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ELInstagramCloneTTT.PostViewController.deletePostOnFirebase() -&gt; ()"
+                  moduleName = "ELInstagramCloneTTT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardlev/Desktop/ELInstagramCloneTTT/ELInstagramCloneTTT/Controllers/PostViewController.swift"
+                  timestampString = "543443303.5545141"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "940">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in ELInstagramCloneTTT.PostViewController.deletePostOnFirebase() -&gt; ()"
+                  moduleName = "ELInstagramCloneTTT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eduardlev/Desktop/ELInstagramCloneTTT/ELInstagramCloneTTT/Controllers/PostViewController.swift"
+                  timestampString = "543443303.557096"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

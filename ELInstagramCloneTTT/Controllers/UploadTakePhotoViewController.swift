@@ -62,13 +62,22 @@ class UploadTakePhotoViewController: UIViewController {
             let imageReferenceHQ = storage.child("posts").child(user.uid).child("\(postKey)-HQ.jpg")
             let imageReferenceLQ = storage.child("posts").child(user.uid).child("\(postKey)-LQ.jpg")
 
-            let imageData = UIImagePNGRepresentation(self.selectedImage!)
+            let imageData = UIImageJPEGRepresentation(self.selectedImage!, 0.5)
             let options = [
+                kCGImagePropertyOrientation: UIImageOrientation.left,
                 kCGImageSourceCreateThumbnailFromImageAlways: true,
                 kCGImageSourceThumbnailMaxPixelSize: 300] as CFDictionary
             let source = CGImageSourceCreateWithData(imageData! as CFData, nil)!
             let imageReference = CGImageSourceCreateThumbnailAtIndex(source, 0, options)!
-            let thumbnail = UIImage(cgImage: imageReference)
+            var thumbnail = UIImage(cgImage: imageReference)
+
+            /*if thumbnail.imageOrientation != UIImageOrientation.up {
+                UIGraphicsBeginImageContextWithOptions(thumbnail.size, false, thumbnail.scale)
+                thumbnail.draw(in: CGRect(x: 0, y: 0, width: thumbnail.size.width, height: thumbnail.size.height))
+                let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                thumbnail = normalizedImage!
+            }*/
 
             if let image = self.selectedImage,
                 let dataLQ = UIImageJPEGRepresentation(thumbnail, 0.5),

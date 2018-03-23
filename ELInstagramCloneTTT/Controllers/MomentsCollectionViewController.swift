@@ -9,12 +9,7 @@
 import UIKit
 import Firebase
 import Alamofire
-
-struct imagePost: Decodable {
-    var order: Double!
-    var pathToHQImage: String!
-    var pathToLQImage: String!
-}
+import AFNetworking
 
 private let reuseIdentifier = "momentCell"
 
@@ -30,6 +25,7 @@ class MomentsCollectionViewController: UICollectionViewController {
     var actualImages: [imagePost] = []
     var imageURLS: [String] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,16 +39,19 @@ class MomentsCollectionViewController: UICollectionViewController {
             self.collectionView?.refreshControl = refreshControl
         }
 
+    AppDelegate.shared().showActivityIndicator()
     self.downloadImageURLS()
     }
 
     @objc private func refreshOptions(sender: UIRefreshControl) {
         self.downloadImageURLS()
+        AppDelegate.shared().showActivityIndicator()
         sender.endRefreshing()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.downloadImageURLS()
     }
 
     func downloadImageURLS() {
@@ -90,9 +89,23 @@ class MomentsCollectionViewController: UICollectionViewController {
                                                 }
                                             }
                                             self.collectionView?.reloadData()
+                                            AppDelegate.shared().dismissActivityIndicator()
                                         }
                                       })
             }
+        }
+    }
+
+    @IBAction func logoutButtonDidClick(_ sender: UIBarButtonItem) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginVC")
+        present(vc!, animated: true) {
         }
     }
 
@@ -154,72 +167,50 @@ class MomentsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                      for: indexPath)
-        updateImageForCell(cell: cell,
-                           inCollectionView: collectionView,
-                           withImageURL: imageURLS[indexPath.row],
-                           atIndexPath: indexPath)
+                                                      for: indexPath) as! MomentsCell
+        let imageURL = imageURLS[indexPath.row]
+        self.updateImageForCell(cell: cell,
+                                inCollectionView: collectionView,
+                                withImageURL: imageURL,
+                                atIndexPath: indexPath)
         return cell
     }
 
-    func updateImageForCell(cell: UICollectionViewCell,
+    func updateImageForCell(cell: MomentsCell,
                             inCollectionView collectionView: UICollectionView,
                             withImageURL: String,
                             atIndexPath indexPath: IndexPath) {
-        let imageView = cell.viewWithTag(1) as! UIImageView // gets the first view in the hierarchy
-        imageView.image = UIImage(named: "placeholder")
-        ImageManager.shared.downloadImageFromURL(withImageURL) {
-            (success, image) -> Void in
+        /*if let url = URL(string: withImageURL) {
+            cell.imageView.setImageWith(url, placeholderImage: UIImage(named: "placeholder"))
+        }*/
+         cell.imageView.image = UIImage(named: "placeholder")
+         ImageManager.shared.downloadImageFromURL(withImageURL) {
+            (success, image, wasCached) -> Void in
             if success && image != nil {
                 // checks that the view did not move before setting the image to the cell!
-                if collectionView.indexPath(for: cell)?.row == indexPath.row {
-                    imageView.image = image
+                if wasCached || collectionView.cellForItem(at: indexPath) == cell {
+                    cell.imageView.image = image
                 }
             }
-        }
+         }
     }
 
-    // MARK: - Lazy Loading of cells
-    /*func loadImagesForOnScreenRows() {
-        if imageURLS.count > 0 {
-            if let visiblePaths = collectionView?.indexPathsForVisibleItems {
-                for indexPath in visiblePaths {
-                    let cell = collectionView?.cellForItem(at: indexPath)
-                    let imageURL = imageURLS[indexPath.row]
-                    self.updateImageForCell(cell: cell!,
-                                            inCollectionView: self.collectionView!,
-                                            withImageURL: imageURL,
-                                            atIndexPath: indexPath)
-                }
-            }
-        }
-    }*/
-
-    // MARK: UICollectionViewDelegate
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
         getPosts(indexPath: indexPath)
     }
-
-    /*override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        loadImagesForOnScreenRows()
-    }
-
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView,
-                                           willDecelerate decelerate: Bool) {
-        loadImagesForOnScreenRows()
-    }*/
 }
 
-extension MomentsCollectionViewController : UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+/*extension MomentsCollectionViewController : UICollectionViewDataSourcePrefetching {
+
+    /*func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let cell = collectionView.cellForItem(at: indexPath)
             let imageURL = imageURLS[indexPath.row]
             ImageManager.shared.prefetchItem(url: imageURL)
         }
-    }
-}
+    }*/
+}*/
 
 extension MomentsCollectionViewController : UICollectionViewDelegateFlowLayout {
 
@@ -250,4 +241,7 @@ extension MomentsCollectionViewController : UICollectionViewDelegateFlowLayout {
         return 0 // Space between rows in the collection View
     }
 }
+
+
+
 

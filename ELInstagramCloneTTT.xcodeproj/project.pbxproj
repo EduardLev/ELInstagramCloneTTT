@@ -22,6 +22,8 @@
 		D433E4B4205EEDA900D05CAB /* MomentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4B3205EEDA900D05CAB /* MomentsTableViewCell.swift */; };
 		D433E4DA20601EF600D05CAB /* FirebaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4D920601EF600D05CAB /* FirebaseURL.swift */; };
 		D433E4DC2060387F00D05CAB /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433E4DB2060387F00D05CAB /* ImageManager.swift */; };
+		D44695A820641E3C006C5546 /* MomentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44695A720641E3C006C5546 /* MomentsCell.swift */; };
+		D44695AA20643019006C5546 /* imagePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44695A920643019006C5546 /* imagePost.swift */; };
 		D47142B5205D848700F4E4C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47142B4205D848700F4E4C0 /* AppDelegate.swift */; };
 		D47142B7205D848700F4E4C0 /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47142B6205D848700F4E4C0 /* LoginScreenViewController.swift */; };
 		D47142BA205D848700F4E4C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47142B8205D848700F4E4C0 /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		D433E4B3205EEDA900D05CAB /* MomentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsTableViewCell.swift; sourceTree = "<group>"; };
 		D433E4D920601EF600D05CAB /* FirebaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseURL.swift; sourceTree = "<group>"; };
 		D433E4DB2060387F00D05CAB /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		D44695A720641E3C006C5546 /* MomentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentsCell.swift; sourceTree = "<group>"; };
+		D44695A920643019006C5546 /* imagePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePost.swift; sourceTree = "<group>"; };
 		D47142B1205D848700F4E4C0 /* ELInstagramCloneTTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELInstagramCloneTTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47142B4205D848700F4E4C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D47142B6205D848700F4E4C0 /* LoginScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				D433E4A5205DFF4F00D05CAB /* UserTableViewCell.swift */,
 				D433E4AF205EE97A00D05CAB /* CommentTableViewCell.swift */,
 				D433E4B3205EEDA900D05CAB /* MomentsTableViewCell.swift */,
+				D44695A720641E3C006C5546 /* MomentsCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				D433E4AB205E01E700D05CAB /* User.swift */,
 				D433E4B1205EEA8B00D05CAB /* Post.swift */,
 				D41CDF4D206198F0001D1A08 /* Comment.swift */,
+				D44695A920643019006C5546 /* imagePost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ELInstagramCloneTTT/Pods-ELInstagramCloneTTT-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -276,6 +283,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -338,11 +346,13 @@
 				D433E4A1205DEEB000D05CAB /* MomentsCollectionViewController.swift in Sources */,
 				D41CDF4C20617138001D1A08 /* PostViewController.swift in Sources */,
 				D433E4DC2060387F00D05CAB /* ImageManager.swift in Sources */,
+				D44695AA20643019006C5546 /* imagePost.swift in Sources */,
 				D41CDF4E206198F0001D1A08 /* Comment.swift in Sources */,
 				D433E4B0205EE97A00D05CAB /* CommentTableViewCell.swift in Sources */,
 				D433E4A6205DFF4F00D05CAB /* UserTableViewCell.swift in Sources */,
 				D47142B5205D848700F4E4C0 /* AppDelegate.swift in Sources */,
 				D433E4B4205EEDA900D05CAB /* MomentsTableViewCell.swift in Sources */,
+				D44695A820641E3C006C5546 /* MomentsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
