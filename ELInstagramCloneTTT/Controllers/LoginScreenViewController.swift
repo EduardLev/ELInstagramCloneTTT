@@ -23,6 +23,13 @@ class LoginScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let user = Auth.auth().currentUser {
+            let vc = UIStoryboard(name: "Main",
+                                  bundle: nil).instantiateViewController(withIdentifier: "TabBar")
+            self.present(vc, animated: true, completion: nil)
+        }
+        
         updateUI()
 
         // Creates tap gesture to recognize when user clicks on screen

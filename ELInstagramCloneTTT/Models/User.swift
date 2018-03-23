@@ -8,14 +8,19 @@
 
 import UIKit
 
-struct User: Codable {
+struct LocalUser: Codable {
     var userID: String!
     var username: String!
-    var email: String!
 
-    init(userID: String, username: String, email: String) {
+    var data: Data {
+        return try! JSONEncoder().encode(self)
+    }
+    var dictionary: [String: Any] {
+        return (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
+    }
+
+    init(userID: String, username: String) {
         self.userID = userID
         self.username = username
-        self.email = email
     }
 }

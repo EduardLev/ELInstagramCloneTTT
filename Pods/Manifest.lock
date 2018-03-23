@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
   - Alamofire (4.7.0)
   - Firebase/Auth (4.10.1):
     - Firebase/Core
@@ -53,6 +68,7 @@ PODS:
   - SwiftLint (0.25.0)
 
 DEPENDENCIES:
+  - AFNetworking
   - Alamofire
   - Firebase/Auth
   - Firebase/Core
@@ -61,6 +77,7 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Firebase: 92c6ba593e32db0defde464a9adc981d5cb49f97
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
@@ -75,6 +92,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
 
-PODFILE CHECKSUM: 5a8ea666f833d6b01c90281f0962f055f821db75
+PODFILE CHECKSUM: 5873758b49e463e15da1cf5a4466db9c9a220753
 
 COCOAPODS: 1.4.0
